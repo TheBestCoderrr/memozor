@@ -37,7 +37,7 @@ void StartGame() {
 	CreateField(symbolsfield, fieldsize);
 	InitField(symbolsfield, fieldsize, PatternSymbols);
 	CreateField(visiblefield, fieldsize);
-	PrintField(symbolsfield, fieldsize);
+	PrintField(visiblefield, fieldsize);
 	
 	PlayersScore playersscore = ProcessGame(symbolsfield, visiblefield, fieldsize);
 
