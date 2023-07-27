@@ -30,7 +30,7 @@ void StartGame() {
 				break;
 		}
 	}
-	char PatternSymbols[] = { "@#$%^&*?![(><|/" };
+	char PatternSymbols[] = { "~!@#$%^&*-=+/?'|XO" };
 	char** symbolsfield = new char* [fieldsize.rows];
 	char** visiblefield = new char* [fieldsize.rows];
 
@@ -38,8 +38,13 @@ void StartGame() {
 	InitField(symbolsfield, fieldsize, PatternSymbols);
 	CreateField(visiblefield, fieldsize);
 	PrintField(symbolsfield, fieldsize);
+	
+	PlayersScore playersscore = ProcessGame(symbolsfield, visiblefield, fieldsize);
 
-	ProcessGame(symbolsfield, visiblefield, fieldsize);
+	if(playersscore.p1score > playersscore.p2score) cout << "Player 1 winner!";
+	else if(playersscore.p1score < playersscore.p2score) cout << "Player 2 winner!";
+	else cout << "Draw!";
+	cout << endl;
 
 	delete[] symbolsfield;
 }
